@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": "2643f9ee-3dd3-4c8e-a3b0-08060210a123",
+      "name": "Demo Viewer",
+      "email": "viewer@example.com",
+      "role": "viewer",
+      "status": "active",
+      "passwordHash": "$2b$10$uPxicNUT193SXMGHkLiILeqwfSeujn1ocOnPE9LClL.g9uFBPRYSi",
+      "createdAt": "2026-04-06T15:15:12.191Z"
+    },
+    {
+      "id": "9b2bfd21-13e5-494d-81e6-1a19bc928566",
+      "name": "Demo Analyst",
+      "email": "analyst@example.com",
+      "role": "analyst",
+      "status": "active",
+      "passwordHash": "$2b$10$CarKdcKMh9cMoWaUuT.kA.gg.Y2lkWnaPy67QMkka4rYMAfJ/jf4e",
+      "createdAt": "2026-04-06T15:15:12.279Z"
+    },
+    {
+      "id": "aefa992a-a10a-4d07-b1bf-1c6b36468e1c",
+      "name": "Demo Admin",
+      "email": "admin@example.com",
+      "role": "admin",
+      "status": "active",
+      "passwordHash": "$2b$10$J746P92pVrZGfSGB6a4.k.8xg5ceuRnq2nL4gwe8RmY4piTu5hCV2",
+      "createdAt": "2026-04-06T15:15:12.364Z"
+    }
+  ],
+  "records": [
+    {
+      "ownerUserId": "9b2bfd21-13e5-494d-81e6-1a19bc928566",
+      "amount": 2500,
+      "type": "income",
+      "category": "salary",
+      "date": "2026-04-01",
+      "notes": "analyst income",
+      "id": "6380a274-fb8d-4fd4-b399-4f16aaee8f5f",
+      "createdAt": "2026-04-06T15:15:12.399Z",
+      "updatedAt": "2026-04-06T15:15:12.399Z"
+    }
+  ]
+}

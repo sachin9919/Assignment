@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finance API — local tester</title>
+  <style>
+    body { font-family: system-ui, Segoe UI, sans-serif; max-width: 840px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    pre { background: #0d1117; color: #3fb950; padding: 1rem; overflow: auto; white-space: pre-wrap; word-break: break-all; border-radius: 8px; font-size: 13px; }
+    button { margin: 0.25rem 0.5rem 0.25rem 0; padding: 0.5rem 1rem; cursor: pointer; border-radius: 6px; border: 1px solid #ccc; background: #f6f8fa; }
+    button:hover { background: #eaeef2; }
+    .hint { color: #57606a; font-size: 0.92rem; }
+    code { background: #f0f0f0; padding: 0.1em 0.35em; border-radius: 4px; }
+    textarea { width: 100%; box-sizing: border-box; font-family: ui-monospace, monospace; font-size: 12px; }
+    h1 { font-size: 1.35rem; }
+    h2 { font-size: 1.05rem; margin-top: 1.75rem; }
+  </style>
+</head>
+<body>
+  <h1>Finance API — local tester</h1>
+  <p class="hint">
+    This page calls your backend with <code>fetch</code>. If <code>/api-docs</code> looks blank, use the buttons here — you will see JSON in the green boxes.
+  </p>
+
+  <h2>1. Health</h2>
+  <button type="button" id="btnHealth">GET /health</button>
+  <pre id="outHealth">Click the button.</pre>
+
+  <h2>2. Seed demo users (get JWT tokens)</h2>
+  <button type="button" id="btnSeed">POST /api/auth/seed</button>
+  <pre id="outSeed">Click the button.</pre>
+
+  <h2>3. Call API with a token</h2>
+  <p class="hint">After seed, the admin token is filled in automatically. You can paste another role’s token if you want.</p>
+  <label for="token">Bearer token</label>
+  <textarea id="token" rows="3" placeholder="eyJhbGciOiJIUzI1NiIs..."></textarea>
+  <p>
+    <button type="button" id="btnRecords">GET /api/records</button>
+    <button type="button" id="btnDash">GET /api/dashboard/summary</button>
+    <button type="button" id="btnUsers">GET /api/users</button>
+  </p>
+  <pre id="outApi">Run seed first, then try a GET.</pre>
+
+  <h2>4. Swagger UI (optional)</h2>
+  <p>
+    <a href="/swagger.html">Swagger UI (CDN — recommended if /api-docs is blank)</a>
+    · <a href="/api-docs">Swagger UI (bundled)</a>
+    · <a href="/openapi.json">OpenAPI JSON</a>
+  </p>
+
+  <script>
+    const base = "";
+    function show(el, data) {
+      el.textContent = typeof data === "string" ? data : JSON.stringify(data, null, 2);
+    }
+    document.getElementById("btnHealth").onclick = async () => {
+      const r = await fetch(base + "/health");
+      const j = await r.json();
+      show(document.getElementById("outHealth"), { status: r.status, body: j });
+    };
+    document.getElementById("btnSeed").onclick = async () => {
+      const r = await fetch(base + "/api/auth/seed", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: "{}",
+      });
+      const text = await r.text();
+      let body;
+      try {
+        body = JSON.parse(text);
+      } catch {
+        body = text;
+      }
+      show(document.getElementById("outSeed"), { status: r.status, body });
+      if (body && body.demo && Array.isArray(body.demo)) {
+        const admin = body.demo.find(function (x) {
+          return x.role === "admin";
+        });
+        if (admin && admin.token) {
+          document.getElementById("token").value = admin.token;
+        }
+      }
+    };
+    async function authFetch(path) {
+      const t = document.getElementById("token").value.trim();
+      if (!t) {
+        alert("Paste a token first (click Seed in step 2).");
+        return;
+      }
+      const r = await fetch(base + path, {
+        headers: { Authorization: "Bearer " + t },
+      });
+      const text = await r.text();
+      let body;
+      try {
+        body = JSON.parse(text);
+      } catch {
+        body = text;
+      }
+      show(document.getElementById("outApi"), { status: r.status, body });
+    }
+    document.getElementById("btnRecords").onclick = function () {
+      authFetch("/api/records");
+    };
+    document.getElementById("btnDash").onclick = function () {
+      authFetch("/api/dashboard/summary");
+    };
+    document.getElementById("btnUsers").onclick = function () {
+      authFetch("/api/users");
+    };
+  </script>
+</body>
+</html>

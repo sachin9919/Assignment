@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": "60c621d6-3af0-4781-b22c-1c19e97c2e98",
+      "name": "Demo Viewer",
+      "email": "viewer@example.com",
+      "role": "viewer",
+      "status": "active",
+      "passwordHash": "$2b$10$BeCNXn7e1e2UW2IdKusoNOxk9D5PS/xhjws0oOnpKMzl8y2UOwNgC",
+      "createdAt": "2026-04-06T15:15:13.220Z"
+    },
+    {
+      "id": "a71b26d4-6b13-41d5-9ea4-0bcc94c793db",
+      "name": "Demo Analyst",
+      "email": "analyst@example.com",
+      "role": "analyst",
+      "status": "active",
+      "passwordHash": "$2b$10$9rDEwv3JR3py/PhYctSNAeD1XTTbnYeOvgHpV80gZI3e4RqEoFFcS",
+      "createdAt": "2026-04-06T15:15:13.315Z"
+    },
+    {
+      "id": "dfbd39c2-2546-4092-8202-817c249ccfa5",
+      "name": "Demo Admin",
+      "email": "admin@example.com",
+      "role": "admin",
+      "status": "active",
+      "passwordHash": "$2b$10$KjfTaMNjRc/Qsn1MQYLhCun3Oh0b.mylUe..IUHMNxzbKRud7I5p.",
+      "createdAt": "2026-04-06T15:15:13.415Z"
+    }
+  ],
+  "records": []
+}

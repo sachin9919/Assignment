@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "id": "2a422a01-e348-4cc9-a261-abf00ce828fd",
+      "name": "Demo Viewer",
+      "email": "viewer@example.com",
+      "role": "viewer",
+      "status": "active",
+      "passwordHash": "$2b$10$cAgP6cuS1EKuk.wbQJv1T.zWvQaJ2V6WtXpg5G6jDbkZDGGyDQcCm",
+      "createdAt": "2026-04-02T09:53:01.192Z"
+    },
+    {
+      "id": "7def807e-feab-4ca3-b631-680c1ff4ff51",
+      "name": "Demo Analyst",
+      "email": "analyst@example.com",
+      "role": "analyst",
+      "status": "active",
+      "passwordHash": "$2b$10$rmKe6VByyfFBmULFqUcjb.4KPPYV.uNHFJ7GyjthsZuHx3SVDOpxC",
+      "createdAt": "2026-04-02T09:53:01.291Z"
+    },
+    {
+      "id": "bf7a07d0-a270-4652-81dd-23edb4635a64",
+      "name": "Demo Admin",
+      "email": "admin@example.com",
+      "role": "admin",
+      "status": "active",
+      "passwordHash": "$2b$10$MughlU0RipxL32opfbSGtOSkVw2JMlLlrmdCT9nf0l/WMxTKhg9Qa",
+      "createdAt": "2026-04-02T09:53:01.376Z"
+    }
+  ],
+  "records": [
+    {
+      "ownerUserId": "bf7a07d0-a270-4652-81dd-23edb4635a64",
+      "amount": 2500,
+      "type": "income",
+      "category": "salary",
+      "date": "2026-04-01",
+      "notes": "analyst income",
+      "id": "09014539-ed03-4d23-8b43-7496265c3262",
+      "createdAt": "2026-04-02T09:54:43.350Z",
+      "updatedAt": "2026-04-02T09:54:43.350Z"
+    },
+    {
+      "ownerUserId": "7def807e-feab-4ca3-b631-680c1ff4ff51",
+      "amount": 2500,
+      "type": "income",
+      "category": "salary",
+      "date": "2026-04-01",
+      "notes": "analyst income",
+      "id": "ba537910-3fbc-4953-a927-04ffd47b95e1",
+      "createdAt": "2026-04-02T09:55:02.052Z",
+      "updatedAt": "2026-04-02T09:55:02.052Z"
+    },
+    {
+      "ownerUserId": "\"bf7a07d0-a270-4652-81dd-23edb4635a64\"",
+      "amount": 1500.5,
+      "type": "expense",
+      "category": "groceries",
+      "date": "2024-01-15",
+      "notes": "Weekly shopping",
+      "id": "574e6a78-eb06-482e-8384-036595f032be",
+      "createdAt": "2026-04-06T14:42:47.345Z",
+      "updatedAt": "2026-04-06T14:42:47.345Z"
+    }
+  ]
+}
