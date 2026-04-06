@@ -27,7 +27,7 @@ Node.js + Express + TypeScript REST API for finance records with role-based acce
 2. Start the server:
    - `npm run dev`
 3. API base URL:
-   - `http://localhost:3000`
+   - `http://localhost:8080`
 
 ### How to use it (step by step)
 
@@ -35,27 +35,27 @@ This project is a **backend API only** (no separate “website” with pages). Y
 
 1. Start the server: `npm run dev`
 2. Open in your browser (pick one):
-   - **`http://localhost:3000`** or **`http://localhost:3000/index.html`** — **simple tester page** (buttons + JSON output; use this if Swagger looks blank)
-   - **`http://localhost:3000/swagger.html`** — Swagger UI loaded from CDN (often works when `/api-docs` is broken)
-   - **`http://localhost:3000/api-docs`** — bundled Swagger UI
-   - Raw spec: **`http://localhost:3000/openapi.json`**
+   - **`http://localhost:8080`** or **`http://localhost:8080/index.html`** — **simple tester page** (buttons + JSON output; use this if Swagger looks blank)
+   - **`http://localhost:8080/swagger.html`** — Swagger UI loaded from CDN (often works when `/api-docs` is broken)
+   - **`http://localhost:8080/api-docs`** — bundled Swagger UI
+   - Raw spec: **`http://localhost:8080/openapi.json`**
 3. In Swagger, expand **`POST /api/auth/seed`** → click **Try it out** → **Execute**.  
    Copy one of the `token` values from the response (or use **Login** with the demo emails/passwords below).
 4. Click the **Authorize** button (lock icon at the top), paste: `Bearer <your-token>` (include the word `Bearer` and a space), then **Authorize**.
 5. Try **`GET /api/records`** or **`GET /api/dashboard/summary`** — you should see JSON results.
 
-**Why `localhost:3000` used to show “Not found”:**  
+**Why `localhost:8080` works now:**  
 There was no page at the root URL `/`. The API lives under paths like `/api/...`. Now `public/index.html` is served at `/` so you get the simple tester page.
 
 **If Swagger shows 200 in the terminal but no response in the browser:**  
 Helmet’s default Content Security Policy can block Swagger UI from rendering the response panel. This project disables that for local Swagger; restart `npm run dev` and hard-refresh the page (Ctrl+F5).
 
 Other useful URLs:
-- **`http://localhost:3000/health`** → `{ "ok": true }` (server is running)
+- **`http://localhost:8080/health`** → `{ "ok": true }` (server is running)
 
 ### Environment Variables (optional)
 Create a `.env` file if you want to override defaults:
-- `PORT` (default: `3000`)
+- `PORT` (default: `8080`)
 - `JWT_SECRET` (default: `dev-secret-change-me`)
 
 ## Authentication
